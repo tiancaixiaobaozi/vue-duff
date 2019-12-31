@@ -1,3 +1,4 @@
 FROM nginx
-COPY ./index.html /usr/share/nginx/html/index.html
+COPY ./dist/ /usr/share/nginx/html/
+COPY ./nginx.conf /etc/nginx/conf.d/mydoge-info.conf
 EXPOSE 80
