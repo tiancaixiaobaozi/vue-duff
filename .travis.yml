@@ -10,5 +10,5 @@ before_install:
 script:
   - npm run build
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t pea3nut/pea3nut-info:latest .
-  - docker push pea3nut/pea3nut-info:latest
+  - docker build -t tiancaixiaobaozi/vue-cli3-demo:latest .
+  - docker push tiancaixiaobaozi/vue-cli3-demo:latest
