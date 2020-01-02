@@ -42,7 +42,7 @@ process.stdin.on('data', async chunk => {
   /**
    * vue组件路径
    */
-  const componentVueName = resolve(componentDirectory, 'main.vue')
+  const componentVueName = resolve(componentDirectory, 'Input.vue.vue')
   /**
    * 入口文件路径
    */
