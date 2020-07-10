@@ -1831,6 +1831,14 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000980, caniuse-lite@^1.0.30000989:
   version "1.0.30000989"
   resolved "https://registry.npm.taobao.org/caniuse-lite/download/caniuse-lite-1.0.30000989.tgz#b9193e293ccf7e4426c5245134b8f2a56c0ac4b9"
 
+carddragger@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.npm.taobao.org/carddragger/download/carddragger-0.3.6.tgz#5ebeef6c8397b307c3a031e8e15453fabd567f2e"
+  integrity sha1-Xr7vbIOXswfDoDHo4VRT+r1Wfy4=
+  dependencies:
+    core-js "^2.6.5"
+    vue "^2.6.10"
+
 case-sensitive-paths-webpack-plugin@^2.2.0:
   version "2.2.0"
   resolved "https://registry.npm.taobao.org/case-sensitive-paths-webpack-plugin/download/case-sensitive-paths-webpack-plugin-2.2.0.tgz#3371ef6365ef9c25fa4b81c16ace0e9c7dc58c3e"
@@ -2274,6 +2282,11 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     ripemd160 "^2.0.0"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+cropperjs@^1.5.7:
+  version "1.5.7"
+  resolved "https://registry.npm.taobao.org/cropperjs/download/cropperjs-1.5.7.tgz#b65019725bae1c6285e881fb661b2141fa57025b"
+  integrity sha1-tlAZcluuHGKF6IH7ZhshQfpXAls=
 
 cross-spawn@^3.0.0:
   version "3.0.1"

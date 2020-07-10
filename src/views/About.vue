@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <button @click="getData">获取数据</button>
-    <div class="box-wrap">
+    <div v-if="false" class="box-wrap">
       <div class="box-1-wrap">
         <div class="main-box main-box-1">
           <div v-for="i in 12" :key="i" class="item">
@@ -18,17 +18,42 @@
         <div v-for="i in 12" :key="i" class="item">{{ i }}</div>
       </div>
     </div>
+    <div>
+      <ul>
+        <li v-for="item in dataList" :key="item.id">
+          <p>{{ item.name }}</p>
+          <p>{{ item.age }}</p>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import { getTestData } from '@/api/base'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
   data () {
     return {}
   },
+  computed: {
+    ...mapGetters(['dataList'])
+  },
+  watch: {
+    'dataList': {
+      handler: function (val) {
+        console.log('watach:::', val)
+      },
+      deep: true,
+      immediate: false
+    }
+  },
+  mounted () {
+    this.changeListAction()
+  },
   methods: {
+    ...mapActions(['changeListAction']),
     async getData () {
       await getTestData()
     }
