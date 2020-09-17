@@ -2,7 +2,7 @@
   <div class="drag">
     <card-dragger
       :data="cardList"
-      :colNum="4"
+      :colNum="2"
       :cardOutsideWidth="300"
       :cardInsideWidth="260"
       :cardOutsideHeight="310"
@@ -65,11 +65,11 @@ export default {
       // 在点击卡片顶部标题栏的时候，触发此函数
       console.log('开始拖动')
     },
-    switchPosition (oldPositon, newPositon, originItem) {
+    switchPosition (oldPosition, newPosition, originItem) {
       // 在拖动一个卡片到另外一个卡片的位置的时候，触发此事件
       console.log('拖动到此位置')
     },
-    finishDrag (oldPositon, newPositon, originItem) {
+    finishDrag (oldPosition, newPosition, originItem) {
       // 松开鼠标
       console.log('结束拖动')
     }

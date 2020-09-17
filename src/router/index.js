@@ -13,7 +13,12 @@ let routes = [
     path: '/drag',
     name: 'drag',
     component: () => import('@/views/Drag')
-  }
+  },
+  {
+    path: '/drag2',
+    name: 'drag2',
+    component: () => import('@/views/Drag2')
+  },
 ]
 const routerContext = require.context('./', true, /index\.js$/)
 

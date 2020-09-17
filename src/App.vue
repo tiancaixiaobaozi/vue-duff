@@ -4,7 +4,8 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/avatar">图片裁剪</router-link> |
-      <router-link to="/drag">拖拽</router-link>
+      <router-link to="/drag">拖拽</router-link> |
+      <router-link to="/drag2">拖拽2</router-link>
     </div>
     <transition name="fade">
       <keep-alive>
@@ -43,7 +44,7 @@
   默认类名是以上6个，如果在transition标签中指定了name=’xxx’,那么6个类名将会变成
   xxx开头的，例如xxx-enter-active。
 */
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active {
   transition: opacity .5s;
 }
 .fade-enter, .fade-leave-to {

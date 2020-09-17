@@ -1,9 +1,6 @@
 <template>
   <div class="home">
     <p>This is Home</p>
-    <!--<gb-input>
-      <div slot="label">姓名：</div>
-    </gb-input>-->
     <button @click="getList">重新获取</button>
     <div class="image-container">
       <el-image
@@ -26,6 +23,7 @@
 
 <script>
 import { getData } from '@/api/pixiv'
+import * as API from '@/api/base'
 
 export default {
   name: 'home',
