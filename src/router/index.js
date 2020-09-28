@@ -19,6 +19,11 @@ let routes = [
     name: 'drag2',
     component: () => import('@/views/Drag2')
   },
+  {
+    path: '/remark',
+    name: 'remark',
+    component: () => import('@/views/Remark')
+  }
 ]
 const routerContext = require.context('./', true, /index\.js$/)
 

@@ -5,7 +5,8 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/avatar">图片裁剪</router-link> |
       <router-link to="/drag">拖拽</router-link> |
-      <router-link to="/drag2">拖拽2</router-link>
+      <router-link to="/drag2">拖拽2</router-link> |
+      <router-link to="/remark">备注</router-link> |
     </div>
     <transition name="fade">
       <keep-alive>
