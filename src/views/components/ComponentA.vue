@@ -14,21 +14,21 @@
 </template>
 
 <script>
-  import ComponentB from './ComponentB'
+import ComponentB from './ComponentB'
 
-  export default {
-    name: "ComponentA",
-    components: { ComponentB },
-    mounted() {
-      console.log(this.$listeners)
-      console.log(this.$attrs)
-    },
-    methods: {
-      tapChild() {
-        this.$listeners.chan()
-      }
+export default {
+  name: 'ComponentA',
+  components: { ComponentB },
+  mounted () {
+    console.log(this.$listeners)
+    console.log(this.$attrs)
+  },
+  methods: {
+    tapChild () {
+      this.$listeners.chan()
     }
   }
+}
 </script>
 
 <style scoped>

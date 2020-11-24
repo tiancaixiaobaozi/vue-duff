@@ -48,32 +48,32 @@ export default {
         }
       ],
       colors: [{
-        text: "Aquamarine",
-        value: 1,
+        text: 'Aquamarine',
+        value: 1
       }, {
         value: 2,
-        text: "Hotpink"
+        text: 'Hotpink'
       }, {
         value: 3,
-        text: "Gold"
+        text: 'Gold'
       }, {
         value: 4,
-        text: "Crimson"
+        text: 'Crimson'
       }, {
         value: 5,
-        text: "Blueviolet"
+        text: 'Blueviolet'
       }, {
         value: 6,
-        text: "Lightblue"
+        text: 'Lightblue'
       }, {
         value: 7,
-        text: "Cornflowerblue"
+        text: 'Cornflowerblue'
       }, {
         value: 8,
-        text: "Skyblue"
+        text: 'Skyblue'
       }, {
         value: 9,
-        text: "Burlywood"
+        text: 'Burlywood'
       }]
     }
   },

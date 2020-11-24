@@ -1,13 +1,13 @@
 <template>
   <div class="home">
     <p>This is Home</p>
-    <button @click="getList">重新获取</button>
+    <button @click="getList" style="margin-bottom: 30px">重新获取</button>
     <div class="image-container">
       <el-image
         v-for="data in dataSource"
         :key="data.id"
-        :src="getImages(data.image_urls.square_medium)"
-        :preview-src-list="[data.image_urls.square_medium]"
+        :src="imgProxy(data.image_urls.square_medium)"
+        :preview-src-list="[imgProxy(data.image_urls.square_medium)]"
         style="width: 100px; height: 100px"
       />
     </div>
@@ -39,19 +39,31 @@ export default {
   methods: {
     async getList () {
       const params = {
-        type: 'rank'
+        type: 'rank',
+        mode: 'week_original'
       }
       this.dataSource = []
       let res = await getData(params)
       this.dataSource = res.data.illusts
       console.log(res)
     },
-    getImages (_url) {
-      if (_url !== undefined) {
-        // let _u = _url.substring(8)
-        return 'https://api.imjad.cn/interface/img/PixivProxy.php?url=' + _url
+    imgProxy(url) {
+      let result = url.replace(/i.pximg.net/g, 'pximg.pixiv-viewer.workers.dev')
+      const isSupportWebP = (() => {
+        const elem = document.createElement('canvas');
+        if (elem.getContext && elem.getContext('2d')) {
+          // was able or not to get WebP representation
+          return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+        }
+        // very old browser like IE 8, canvas not supported
+        return false;
+      })
+      if (!isSupportWebP) {
+        result = result.replace(/_10_webp/g, '_70')
+        result = result.replace(/_webp/g, '')
       }
-    }
+      return result
+    },
   }
 }
 </script>

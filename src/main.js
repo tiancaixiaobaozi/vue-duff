@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 // 全局组件自动注册
 import './components/index'
 import VueDND from 'awe-dnd'
+import './polyfill'
 
 Vue.use(VueDND)
 

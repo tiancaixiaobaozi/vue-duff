@@ -19,10 +19,11 @@
       </div>
     </div>
     <div>
-      <ul>
-        <li v-for="item in dataList" :key="item.id">
-          <p>{{ item.name }}</p>
-          <p>{{ item.age }}</p>
+      <p>{{ content }}</p>
+      <ul v-show="false">
+        <li v-for="item in dataList" :key="item.id" style="text-align: left;">
+          <span>{{ item.name }}</span> -
+          <span>{{ item.age }}</span>
         </li>
       </ul>
     </div>
@@ -31,11 +32,14 @@
 
 <script>
 import { getTestData } from '@/api/base'
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { getData } from '@/api/yy'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data () {
-    return {}
+    return {
+      content: ''
+    }
   },
   computed: {
     ...mapGetters(['dataList'])
@@ -55,7 +59,10 @@ export default {
   methods: {
     ...mapActions(['changeListAction']),
     async getData () {
-      await getTestData()
+      const { data } = await getData({
+        cat: 'a'
+      })
+      this.content = data
     }
   }
 }

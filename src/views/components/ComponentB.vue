@@ -7,18 +7,18 @@
 </template>
 
 <script>
-  export default {
-    name: "ComponentB",
-    mounted() {
-      console.log(this.$listeners)
-      console.log(this.$attrs)
-    },
-    methods: {
-      tapChild() {
-        this.$listeners.chan()
-      }
+export default {
+  name: 'ComponentB',
+  mounted () {
+    console.log(this.$listeners)
+    console.log(this.$attrs)
+  },
+  methods: {
+    tapChild () {
+      this.$listeners.chan()
     }
   }
+}
 </script>
 
 <style scoped>
