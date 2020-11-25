@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <button @click="getData">获取数据</button>
+    <!-- div边框重叠问题 -->
     <div v-if="false" class="box-wrap">
       <div class="box-1-wrap">
         <div class="main-box main-box-1">
@@ -18,7 +18,9 @@
         <div v-for="i in 12" :key="i" class="item">{{ i }}</div>
       </div>
     </div>
+    <!-- 一言 -->
     <div>
+      <button @click="getData">获取数据</button>
       <p>{{ content }}</p>
       <ul v-show="false">
         <li v-for="item in dataList" :key="item.id" style="text-align: left;">
@@ -27,6 +29,11 @@
         </li>
       </ul>
     </div>
+    <!-- 事件监听 -->
+    <div>
+      <el-switch :value="showC" @change="showC = !showC" active-text="事件监听" />
+      <comp-event-listener v-if="showC" @hook:mounted="compMounted" />
+    </div>
   </div>
 </template>
 
@@ -34,13 +41,16 @@
 import { getTestData } from '@/api/base'
 import { getData } from '@/api/yy'
 import { mapGetters, mapActions } from 'vuex'
+import CompEventListener from "./components/CompEventListener";
 
 export default {
   data () {
     return {
-      content: ''
+      content: '',
+      showC: false
     }
   },
+  components: { CompEventListener },
   computed: {
     ...mapGetters(['dataList'])
   },
@@ -63,6 +73,9 @@ export default {
         cat: 'a'
       })
       this.content = data
+    },
+    compMounted() {
+      console.log('组件c已加载')
     }
   }
 }

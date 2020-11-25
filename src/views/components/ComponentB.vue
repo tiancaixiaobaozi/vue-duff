@@ -9,12 +9,10 @@
 <script>
 export default {
   name: 'ComponentB',
-  mounted () {
-    console.log(this.$listeners)
-    console.log(this.$attrs)
-  },
   methods: {
     tapChild () {
+      console.log('B:::', this.$listeners)
+      console.log('B:::', this.$attrs)
       this.$listeners.chan()
     }
   }

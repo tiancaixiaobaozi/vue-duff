@@ -20,9 +20,9 @@ let routes = [
     component: () => import('@/views/Drag2')
   },
   {
-    path: '/remark',
-    name: 'remark',
-    component: () => import('@/views/Remark')
+    path: '/event',
+    name: 'event',
+    component: () => import('@/views/Event')
   }
 ]
 const routerContext = require.context('./', true, /index\.js$/)

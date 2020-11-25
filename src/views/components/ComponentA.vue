@@ -19,13 +19,11 @@ import ComponentB from './ComponentB'
 export default {
   name: 'ComponentA',
   components: { ComponentB },
-  mounted () {
-    console.log(this.$listeners)
-    console.log(this.$attrs)
-  },
   methods: {
     tapChild () {
-      this.$listeners.chan()
+      console.log('A:::', this.$listeners)
+      console.log('A:::', this.$attrs)
+      // this.$listeners.chan()
     }
   }
 }
