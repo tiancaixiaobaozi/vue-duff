@@ -34,20 +34,27 @@
       <el-switch :value="showC" @change="showC = !showC" active-text="事件监听" />
       <comp-event-listener v-if="showC" @hook:mounted="compMounted" />
     </div>
+    <div style="padding: 20px;">
+      <p v-if="userInfo">{{ userInfo.name }} | {{ userInfo.age }}岁</p>
+      <button @click="checkUser">查看store</button>
+      <button @click="modifyUser">改变store</button>
+      <button @click="appModifyUser">app改变store</button>
+    </div>
   </div>
 </template>
 
 <script>
 import { getTestData } from '@/api/base'
 import { getData } from '@/api/yy'
-import { mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import CompEventListener from "./components/CompEventListener";
 
 export default {
   data () {
     return {
       content: '',
-      showC: false
+      showC: false,
+      userInfo: null,
     }
   },
   components: { CompEventListener },
@@ -76,7 +83,22 @@ export default {
     },
     compMounted() {
       console.log('组件c已加载')
-    }
+    },
+    checkUser() {
+      this.userInfo = this.$store.state.user.userInfo
+      console.log(this.$store)
+    },
+    modifyUser() {
+      this.$store.dispatch('user/modifyAction', {
+        name: '李四',
+        age: 24
+      })
+      console.log('修改成功')
+    },
+    appModifyUser() {
+      this.$store.dispatch('app/checkAction')
+      console.log('修改成功')
+    },
   }
 }
 </script>
