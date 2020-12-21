@@ -1,5 +1,5 @@
 const app = {
-  namespaced: false,
+  namespaced: true,
   state: {
     app: {
       isWin: true

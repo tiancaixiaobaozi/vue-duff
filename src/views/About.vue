@@ -40,6 +40,14 @@
       <button @click="modifyUser">改变store</button>
       <button @click="appModifyUser">app改变store</button>
     </div>
+    <div>
+      <input
+        v-for="i in 5"
+        :key="i"
+        type="checkbox"
+        :chekced="i === 2?'checked':false"
+      >
+    </div>
   </div>
 </template>
 
@@ -72,9 +80,12 @@ export default {
   },
   mounted () {
     this.changeListAction()
+    let box = document.getElementById('c2')
+    box.setAttribute('checked', 'checked')
+    console.log(this['app/checkAction'])
   },
   methods: {
-    ...mapActions(['changeListAction']),
+    ...mapActions(['changeListAction', 'app/checkAction']),
     async getData () {
       const { data } = await getData({
         cat: 'a'
