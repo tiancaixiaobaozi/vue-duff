@@ -41,12 +41,10 @@
       <button @click="appModifyUser">app改变store</button>
     </div>
     <div>
-      <input
-        v-for="i in 5"
-        :key="i"
-        type="checkbox"
-        :chekced="i === 2?'checked':false"
-      >
+      <p>姓名：{{ username }}</p>
+      <gb-input v-model="username" :name="username">
+        <p slot="label">姓名：</p>
+      </gb-input>
     </div>
   </div>
 </template>
@@ -63,6 +61,7 @@ export default {
       content: '',
       showC: false,
       userInfo: null,
+      username: '123',
     }
   },
   components: { CompEventListener },
@@ -80,8 +79,6 @@ export default {
   },
   mounted () {
     this.changeListAction()
-    let box = document.getElementById('c2')
-    box.setAttribute('checked', 'checked')
     console.log(this['app/checkAction'])
   },
   methods: {
