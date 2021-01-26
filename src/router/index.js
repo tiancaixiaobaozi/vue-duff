@@ -3,7 +3,28 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-let routes = []
+let routes = [
+  {
+    path: '/avatar',
+    name: 'avatar',
+    component: () => import('@/views/Avatar')
+  },
+  {
+    path: '/drag',
+    name: 'drag',
+    component: () => import('@/views/Drag')
+  },
+  {
+    path: '/drag2',
+    name: 'drag2',
+    component: () => import('@/views/Drag2')
+  },
+  {
+    path: '/event',
+    name: 'event',
+    component: () => import('@/views/Event')
+  }
+]
 const routerContext = require.context('./', true, /index\.js$/)
 
 routerContext.keys().forEach(route => {

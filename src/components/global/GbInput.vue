@@ -2,7 +2,7 @@
   <div class="gb-input">
     <slot name="label"></slot>
     <label>
-      <input type="text" />
+      <input :value="name" type="text" @input="handleInputChange" />
     </label>
   </div>
 </template>
@@ -10,7 +10,20 @@
 <script>
 export default {
   name: 'GbInput',
-  props: {}
+  model: {
+    props: 'name',
+    event: 'change-name'
+  },
+  props: {
+    name: {
+      type: [String, Number]
+    }
+  },
+  methods: {
+    handleInputChange(e) {
+      this.$emit('change-name', e.target.value)
+    }
+  }
 }
 </script>
 
