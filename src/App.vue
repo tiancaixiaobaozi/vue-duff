@@ -8,31 +8,55 @@
       <router-link to="/drag2">拖拽2</router-link> |
       <router-link to="/event">事件</router-link> |
     </div>
-    <transition name="fade">
-      <keep-alive>
-        <router-view />
-      </keep-alive>
-    </transition>
+    <div id="app-container">
+      <transition name="fade">
+        <keep-alive>
+          <router-view />
+        </keep-alive>
+      </transition>
+    </div>
   </div>
 </template>
 
 <style lang="scss">
+body {
+  padding: 0;
+  margin: 0;
+}
+code {
+  padding: 12px;
+  border-radius: 6px;
+  background: #2c3e50;
+  color: #42b983;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
 }
 #nav {
+  width: 150px;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #2c3e50;
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #fff;
     &.router-link-exact-active {
       color: #42b983;
     }
   }
+}
+#app-container {
+  padding: 30px;
 }
 
 /*

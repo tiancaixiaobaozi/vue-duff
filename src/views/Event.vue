@@ -1,5 +1,8 @@
 <template>
   <div class="remark">
+    <code>
+      $attrs和$listeners的使用
+    </code>
     <p>ComponentFather</p>
     <component-a :id="id" :name="name" @chan="handleChange" />
   </div>
@@ -19,8 +22,8 @@ export default {
     }
   },
   methods: {
-    handleChange () {
-      console.log('i m change...')
+    handleChange (data) {
+      console.log(data, 'i m change...')
     }
   }
 }
