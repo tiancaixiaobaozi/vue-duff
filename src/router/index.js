@@ -23,6 +23,11 @@ let routes = [
     path: '/event',
     name: 'event',
     component: () => import('@/views/Event')
+  },
+  {
+    path: '/tab',
+    name: 'tab',
+    component: () => import('@/views/Tab')
   }
 ]
 const routerContext = require.context('./', true, /index\.js$/)

@@ -7,6 +7,7 @@
       <router-link to="/drag">拖拽</router-link> |
       <router-link to="/drag2">拖拽2</router-link> |
       <router-link to="/event">事件</router-link> |
+      <router-link to="/tab">Tab</router-link> |
     </div>
     <div id="app-container">
       <transition name="fade">
@@ -57,6 +58,8 @@ code {
 }
 #app-container {
   padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /*
