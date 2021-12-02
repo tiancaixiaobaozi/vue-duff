@@ -3,22 +3,22 @@
 </template>
 
 <script>
-  export default {
-    name: "CompEventListener",
-    mounted() {
-      window.addEventListener('resize', this.listenerFoo)
-      // 利用hook监听组件卸载
-      this.$once('hook:beforeDestroy', () => {
-        console.log('组件c已卸载')
-        window.removeEventListener('resize', this.listenerFoo)
-      })
-    },
-    methods: {
-      listenerFoo() {
-        console.log('窗口监听')
-      }
-    },
+export default {
+  name: 'CompEventListener',
+  mounted () {
+    window.addEventListener('resize', this.listenerFoo)
+    // 利用hook监听组件卸载
+    this.$once('hook:beforeDestroy', () => {
+      console.log('组件c已卸载')
+      window.removeEventListener('resize', this.listenerFoo)
+    })
+  },
+  methods: {
+    listenerFoo () {
+      console.log('窗口监听')
+    }
   }
+}
 </script>
 
 <style scoped>

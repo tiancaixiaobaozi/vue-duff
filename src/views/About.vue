@@ -50,10 +50,9 @@
 </template>
 
 <script>
-import { getTestData } from '@/api/base'
 import { getData } from '@/api/yy'
-import { mapState, mapGetters, mapActions } from 'vuex'
-import CompEventListener from "./components/CompEventListener";
+import { mapGetters, mapActions } from 'vuex'
+import CompEventListener from './components/CompEventListener'
 
 export default {
   data () {
@@ -61,7 +60,7 @@ export default {
       content: '',
       showC: false,
       userInfo: null,
-      username: '123',
+      username: '123'
     }
   },
   components: { CompEventListener },
@@ -89,24 +88,24 @@ export default {
       })
       this.content = data
     },
-    compMounted() {
+    compMounted () {
       console.log('组件c已加载')
     },
-    checkUser() {
+    checkUser () {
       this.userInfo = this.$store.state.user.userInfo
       console.log(this.$store)
     },
-    modifyUser() {
+    modifyUser () {
       this.$store.dispatch('user/modifyAction', {
         name: '李四',
         age: 24
       })
       console.log('修改成功')
     },
-    appModifyUser() {
+    appModifyUser () {
       this.$store.dispatch('app/checkAction')
       console.log('修改成功')
-    },
+    }
   }
 }
 </script>
