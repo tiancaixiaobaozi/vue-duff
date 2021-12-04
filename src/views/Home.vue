@@ -23,7 +23,6 @@
 
 <script>
 import { getData } from '@/api/pixiv'
-import * as API from '@/api/base'
 
 export default {
   name: 'home',
@@ -34,7 +33,7 @@ export default {
     }
   },
   mounted () {
-    this.getList()
+    // this.getList()
   },
   methods: {
     async getList () {
@@ -47,29 +46,29 @@ export default {
       this.dataSource = res.data.illusts
       console.log(res)
     },
-    imgProxy(url) {
+    imgProxy (url) {
       let result = url.replace(/i.pximg.net/g, 'pximg.pixiv-viewer.workers.dev')
-      const isSupportWebP = (() => {
-        const elem = document.createElement('canvas');
+      const isSupportWebP = () => {
+        const elem = document.createElement('canvas')
         if (elem.getContext && elem.getContext('2d')) {
           // was able or not to get WebP representation
-          return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+          return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0
         }
         // very old browser like IE 8, canvas not supported
-        return false;
-      })
+        return false
+      }
       if (!isSupportWebP) {
         result = result.replace(/_10_webp/g, '_70')
         result = result.replace(/_webp/g, '')
       }
       return result
-    },
+    }
   }
 }
 </script>
 
 <style scoped>
-  /deep/ .el-image {
+  ::v-deep .el-image {
     margin: 10px;
   }
 </style>

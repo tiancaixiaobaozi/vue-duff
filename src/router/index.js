@@ -23,6 +23,16 @@ let routes = [
     path: '/event',
     name: 'event',
     component: () => import('@/views/Event')
+  },
+  {
+    path: '/upload',
+    name: 'upload',
+    component: () => import('@/views/Upload')
+  },
+  {
+    path: '/waterfall',
+    name: 'waterfall',
+    component: () => import('@/views/Waterfall')
   }
 ]
 const routerContext = require.context('./', true, /index\.js$/)

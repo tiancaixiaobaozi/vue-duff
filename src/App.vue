@@ -1,21 +1,97 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/avatar">图片裁剪</router-link> |
-      <router-link to="/drag">拖拽</router-link> |
-      <router-link to="/drag2">拖拽2</router-link> |
-      <router-link to="/event">事件</router-link> |
-    </div>
-    <transition name="fade">
-      <keep-alive>
-        <router-view />
-      </keep-alive>
-    </transition>
+    <el-container>
+      <el-header class="header">
+        <el-menu
+          default-active="/"
+          router
+          class="el-menu-demo"
+          mode="horizontal"
+          background-color="#545c64"
+          text-color="#fff"
+          active-text-color="#ffd04b">
+          <el-menu-item index="/">Home</el-menu-item>
+          <el-submenu index="css">
+            <template slot="title">CSS相关</template>
+            <el-menu-item index="/grid">Grid布局</el-menu-item>
+          </el-submenu>
+          <el-submenu index="workspace">
+            <template slot="title">我的工作台</template>
+            <el-menu-item index="/about">About</el-menu-item>
+            <el-menu-item index="/avatar">图片裁剪</el-menu-item>
+            <el-menu-item index="/drag">拖拽1</el-menu-item>
+            <el-menu-item index="/drag2">拖拽2</el-menu-item>
+            <el-menu-item index="/event">事件</el-menu-item>
+            <el-menu-item index="/upload">上传</el-menu-item>
+            <el-menu-item index="/waterfall">瀑布流</el-menu-item>
+          </el-submenu>
+        </el-menu>
+      </el-header>
+      <el-main>
+        <transition name="fade">
+          <keep-alive>
+            <router-view />
+          </keep-alive>
+        </transition>
+      </el-main>
+    </el-container>
   </div>
 </template>
 
+<style>
+/* http://meyerweb.com/eric/tools/css/reset/
+   v5.0.1 | 20191019
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, menu, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+  display: none;
+}
+body {
+  line-height: 1;
+}
+menu, ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+</style>
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -24,15 +100,12 @@
   text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+
+.el-header {
+  padding: 0 !important;
+}
+.el-main {
+  height: calc(100vh - 60px);
 }
 
 /*
