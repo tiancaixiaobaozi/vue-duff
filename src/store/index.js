@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+// import Vuex from './mystore'
 import user from './modules/user'
 import app from './modules/app'
 
@@ -19,7 +20,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    changeListAction ({ commit }) {
+    changeListAction(context) {
       setTimeout(() => {
         let data = [
           { id: 1, name: '张三', age: 18 },
@@ -30,8 +31,8 @@ export default new Vuex.Store({
           { id: 6, name: '张八', age: 23 },
           { id: 7, name: '张九', age: 24 }
         ]
-        commit('changeList', data)
-      }, 5000)
+        context.commit('changeList', data)
+      }, 2000)
     }
   }
 })
