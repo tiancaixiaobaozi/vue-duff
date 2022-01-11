@@ -7,7 +7,7 @@ const user = {
     }
   },
   mutations: {
-    ['MODIFY'] (state, data) {
+    MODIFY (state, data) {
       state.userInfo = data
     }
   },
