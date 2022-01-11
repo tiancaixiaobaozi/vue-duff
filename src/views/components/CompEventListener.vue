@@ -14,8 +14,8 @@ export default {
     })
   },
   methods: {
-    listenerFoo () {
-      console.log('窗口监听')
+    listenerFoo (e) {
+      console.log('窗口监听>>>', e)
     }
   }
 }

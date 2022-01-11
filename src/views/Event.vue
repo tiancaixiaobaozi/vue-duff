@@ -1,6 +1,8 @@
 <template>
   <div class="remark">
     <p>ComponentFather</p>
+    <p>A-id>{{ id }}</p>
+    <p>A-name>{{ name }}</p>
     <component-a :id="id" :name="name" @chan="handleChange" />
   </div>
 </template>

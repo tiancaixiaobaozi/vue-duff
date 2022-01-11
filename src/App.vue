@@ -1,15 +1,16 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header class="header">
+      <el-aside width="250px" class="menu-bar">
         <el-menu
-          default-active="/"
+          :default-active="active"
           router
           class="el-menu-demo"
-          mode="horizontal"
           background-color="#545c64"
           text-color="#fff"
-          active-text-color="#ffd04b">
+          active-text-color="#ffd04b"
+          unique-opened
+        >
           <el-menu-item index="/">Home</el-menu-item>
           <el-submenu index="css">
             <template slot="title">CSS相关</template>
@@ -17,7 +18,7 @@
           </el-submenu>
           <el-submenu index="workspace">
             <template slot="title">我的工作台</template>
-            <el-menu-item index="/about">About</el-menu-item>
+            <el-menu-item index="/about">关于</el-menu-item>
             <el-menu-item index="/avatar">图片裁剪</el-menu-item>
             <el-menu-item index="/drag">拖拽1</el-menu-item>
             <el-menu-item index="/drag2">拖拽2</el-menu-item>
@@ -26,7 +27,7 @@
             <el-menu-item index="/waterfall">瀑布流</el-menu-item>
           </el-submenu>
         </el-menu>
-      </el-header>
+      </el-aside>
       <el-main>
         <transition name="fade">
           <keep-alive>
@@ -37,6 +38,21 @@
     </el-container>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      active: '/'
+    }
+  },
+  watch: {
+    $route(r) {
+      this.active = r.path
+    }
+  }
+}
+</script>
 
 <style>
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -101,11 +117,18 @@ table {
   color: #2c3e50;
 }
 
-.el-header {
-  padding: 0 !important;
+.menu-bar {
+  background-color: rgb(84, 92, 100);
+}
+.el-menu {
+  border-right: none;
+  .el-submenu__title,
+  .el-menu-item {
+    text-align: left;
+  }
 }
 .el-main {
-  height: calc(100vh - 60px);
+  height: 100vh;
 }
 
 /*

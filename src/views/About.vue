@@ -1,7 +1,12 @@
 <template>
   <div class="about">
+    <!-- 事件监听 -->
+    <div>
+      <el-switch :value="showC" @change="showC = !showC" active-text="组件监听" />
+      <comp-event-listener v-if="showC" @hook:mounted="compMounted" />
+    </div>
     <!-- div边框重叠问题 -->
-    <div v-if="false" class="box-wrap">
+    <div v-if="true" class="box-wrap">
       <div class="box-1-wrap">
         <div class="main-box main-box-1">
           <div v-for="i in 12" :key="i" class="item">
@@ -18,93 +23,23 @@
         <div v-for="i in 12" :key="i" class="item">{{ i }}</div>
       </div>
     </div>
-    <!-- 一言 -->
-    <div>
-      <button @click="getData">获取数据</button>
-      <p>{{ content }}</p>
-      <ul v-show="false">
-        <li v-for="item in dataList" :key="item.id" style="text-align: left;">
-          <span>{{ item.name }}</span> -
-          <span>{{ item.age }}</span>
-        </li>
-      </ul>
-    </div>
-    <!-- 事件监听 -->
-    <div>
-      <el-switch :value="showC" @change="showC = !showC" active-text="事件监听" />
-      <comp-event-listener v-if="showC" @hook:mounted="compMounted" />
-    </div>
-    <div style="padding: 20px;">
-      <p v-if="userInfo">{{ userInfo.name }} | {{ userInfo.age }}岁</p>
-      <button @click="checkUser">查看store</button>
-      <button @click="modifyUser">改变store</button>
-      <button @click="appModifyUser">app改变store</button>
-    </div>
-    <div>
-      <p>姓名：{{ username }}</p>
-      <gb-input v-model="username" :name="username">
-        <p slot="label">姓名：</p>
-      </gb-input>
-    </div>
   </div>
 </template>
 
 <script>
-import { getData } from '@/api/yy'
-import { mapGetters, mapActions } from 'vuex'
 import CompEventListener from './components/CompEventListener'
 
 export default {
   data () {
     return {
       content: '',
-      showC: false,
-      userInfo: null,
-      username: '123'
+      showC: false
     }
   },
   components: { CompEventListener },
-  computed: {
-    ...mapGetters(['dataList'])
-  },
-  watch: {
-    'dataList': {
-      handler: function (val) {
-        console.log('watach:::', val)
-      },
-      deep: true,
-      immediate: false
-    }
-  },
-  mounted () {
-    this.changeListAction()
-    console.log(this['app/checkAction'])
-  },
   methods: {
-    ...mapActions(['changeListAction', 'app/checkAction']),
-    async getData () {
-      const { data } = await getData({
-        cat: 'a'
-      })
-      this.content = data
-    },
     compMounted () {
       console.log('组件c已加载')
-    },
-    checkUser () {
-      this.userInfo = this.$store.state.user.userInfo
-      console.log(this.$store)
-    },
-    modifyUser () {
-      this.$store.dispatch('user/modifyAction', {
-        name: '李四',
-        age: 24
-      })
-      console.log('修改成功')
-    },
-    appModifyUser () {
-      this.$store.dispatch('app/checkAction')
-      console.log('修改成功')
     }
   }
 }

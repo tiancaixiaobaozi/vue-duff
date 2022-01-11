@@ -1,8 +1,8 @@
 <template>
-  <div class="component-b" @click="tapChild">
+  <div class="component-b" @click.stop="tapChild">
     <p>ComponentB</p>
-    <p>B-id:::{{ $attrs.id }}</p>
-    <p>B-name:::{{ $attrs.name }}</p>
+    <p>B-id>>>{{ $attrs.id }}</p>
+    <p>B-name>>>{{ $attrs.name }}</p>
   </div>
 </template>
 
@@ -13,7 +13,6 @@ export default {
     tapChild () {
       console.log('B:::', this.$listeners)
       console.log('B:::', this.$attrs)
-      this.$listeners.chan()
     }
   }
 }
@@ -21,7 +20,8 @@ export default {
 
 <style scoped>
 .component-b {
-  width: 150px;
+  width: 200px;
+  padding: 20px;
   border: solid 2px #cee6ad;
 }
 </style>
