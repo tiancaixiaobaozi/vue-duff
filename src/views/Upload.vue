@@ -102,11 +102,13 @@ export default {
         this.container.file.name,
         this.container.hash
       )
+      // 1. 文件存在于服务器，秒传
       if (!shouldUpload) {
         this.$message.success('秒传：上传成功')
         this.status = Status.wait
         return
       }
+      // 2. 文件不存在，开始上传
       this.data = fileChunkList.map(({ file }, index) => ({
         fileHash: this.container.hash,
         index,
@@ -115,7 +117,7 @@ export default {
         size: file.size,
         percentage: uploadedList.includes(index) ? 100 : 0
       }))
-      // await this.uploadChunks(uploadedList)
+      await this.uploadChunks(uploadedList)
     },
     // 生成文件 hash（web-worker）
     calculateHash(fileChunkList) {
@@ -130,6 +132,16 @@ export default {
           }
         }
       })
+    },
+    // 生成文件切片
+    createFileChunk(file, size = SIZE) {
+      const fileChunkList = []
+      let cur = 0
+      while (cur < file.size) {
+        fileChunkList.push({ file: file.slice(cur, cur + size) })
+        cur += size
+      }
+      return fileChunkList
     },
     handlePause() {
       this.status = Status.pause
@@ -149,40 +161,6 @@ export default {
         this.container.hash
       )
       await this.uploadChunks(uploadedList)
-    },
-    // xhr
-    request({ url, method = 'post', data, headers = {}, onProgress = e => e, requestList }) {
-      return new Promise(resolve => {
-        const xhr = new XMLHttpRequest()
-        xhr.upload.onprogress = onProgress
-        xhr.open(method, url)
-        Object.keys(headers).forEach(key =>
-          xhr.setRequestHeader(key, headers[key])
-        )
-        xhr.send(data)
-        xhr.onload = e => {
-          // 将请求成功的 xhr 从列表中删除
-          if (requestList) {
-            const xhrIndex = requestList.findIndex(item => item === xhr)
-            requestList.splice(xhrIndex, 1)
-          }
-          resolve({
-            data: e.target.response
-          })
-        }
-        // 暴露当前 xhr 给外部
-        requestList && requestList.push(xhr)
-      })
-    },
-    // 生成文件切片
-    createFileChunk(file, size = SIZE) {
-      const fileChunkList = []
-      let cur = 0
-      while (cur < file.size) {
-        fileChunkList.push({ file: file.slice(cur, cur + size) })
-        cur += size
-      }
-      return fileChunkList
     },
     // 上传切片，同时过滤已上传的切片
     async uploadChunks(uploadedList = []) {
@@ -241,6 +219,30 @@ export default {
         })
       })
       return JSON.parse(data)
+    },
+    // xhr
+    request({ url, method = 'post', data, headers = {}, onProgress = e => e, requestList }) {
+      return new Promise(resolve => {
+        const xhr = new XMLHttpRequest()
+        xhr.upload.onprogress = onProgress
+        xhr.open(method, url)
+        Object.keys(headers).forEach(key =>
+          xhr.setRequestHeader(key, headers[key])
+        )
+        xhr.send(data)
+        xhr.onload = e => {
+          // 将请求成功的 xhr 从列表中删除
+          if (requestList) {
+            const xhrIndex = requestList.findIndex(item => item === xhr)
+            requestList.splice(xhrIndex, 1)
+          }
+          resolve({
+            data: e.target.response
+          })
+        }
+        // 暴露当前 xhr 给外部
+        requestList && requestList.push(xhr)
+      })
     },
     // 用闭包保存每个 chunk 的进度数据
     createProgressHandler(item) {
