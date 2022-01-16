@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import Vuex from './mystore'
 import user from './modules/user'
 import app from './modules/app'
 

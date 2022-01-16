@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Router from './my-router'
 
 Vue.use(Router)
 
