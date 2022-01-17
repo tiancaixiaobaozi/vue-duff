@@ -1,5 +1,5 @@
 <template>
-  <div class="component-a" @click="tapChild">
+  <div class="component-a" @click.stop="tapChild">
     <p>ComponentA</p>
     <p>A-id>>{{ $attrs.id }}</p>
     <p>A-name>>{{ $attrs.name }}</p>
@@ -9,7 +9,7 @@
       v-bind:id="obj.id"
       v-bind:name="obj.name"
     -->
-    <component-b v-bind="$attrs" />
+    <component-b v-bind="$attrs" v-on="$listeners" />
   </div>
 </template>
 

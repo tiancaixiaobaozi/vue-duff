@@ -1,5 +1,5 @@
 <template>
-  <div class="remark">
+  <div class="remark" @click="tapParent">
     <p>ComponentFather</p>
     <p>A-id>{{ id }}</p>
     <p>A-name>{{ name }}</p>
@@ -23,6 +23,9 @@ export default {
   methods: {
     handleChange () {
       console.log('i m change...')
+    },
+    tapParent() {
+      console.log(this.$children)
     }
   }
 }
