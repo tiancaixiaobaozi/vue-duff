@@ -1,30 +1,40 @@
 <div id="app"></div>
 <script>
-  function defineReactive(obj, key, val) {
-    Object.defineProperty(obj, key, {
-      get() {
-        console.log('get', key)
-        return val
-      },
-      set(newVal) {
-        console.log('set', key)
-        if (newVal !== val) {
-          val = newVal
-          update()
-        }
+const app = document.getElementById('app')
+let obj = {
+  count: 0
+}
+
+function defineReactive(obj, key, val) {
+  observe(val)
+  Object.defineProperty(obj, key, {
+    get() {
+      return val
+    },
+    set(v) {
+      if (v !== val) {
+        val = v
+        observe(v)
+        update()
       }
-    })
+    }
+  })
+}
+function observe(obj) {
+  if (typeof obj !== 'object' || obj === null) {
+    return
   }
+  Object.keys(obj).forEach(key => {
+    defineReactive(obj, key, obj[key])
+  })
+}
 
-  const app = document.getElementById('app')
-  const obj = {}
-  defineReactive(obj, 'foo', '')
-  obj.foo = new Date().toLocaleTimeString()
-  setInterval(() => {
-    obj.foo = new Date().toLocaleTimeString()
-  }, 1000)
+function update() {
+  app.innerHTML = obj.count
+}
 
-  function update() {
-    app.innerHTML = obj.foo
-  }
+observe(obj)
+setInterval(() => {
+  obj.count++
+}, 1000)
 </script>

@@ -20,6 +20,7 @@
     "node-sass": "^4.14.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
+    "vuedraggable": "^2.24.3",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

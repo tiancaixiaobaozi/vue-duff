@@ -20,6 +20,11 @@ let routes = [
     component: () => import('@/views/Drag2')
   },
   {
+    path: '/drag3',
+    name: 'drag3',
+    component: () => import('@/views/Drag3')
+  },
+  {
     path: '/event',
     name: 'event',
     component: () => import('@/views/Event')
