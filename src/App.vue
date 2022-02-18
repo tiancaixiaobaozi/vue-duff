@@ -26,6 +26,7 @@
             <el-menu-item index="/event">事件</el-menu-item>
             <el-menu-item index="/upload">上传</el-menu-item>
             <el-menu-item index="/waterfall">瀑布流</el-menu-item>
+            <el-menu-item index="/vlist">虚拟列表</el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>

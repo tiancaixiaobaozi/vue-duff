@@ -38,6 +38,11 @@ let routes = [
     path: '/waterfall',
     name: 'waterfall',
     component: () => import('@/views/Waterfall')
+  },
+  {
+    path: '/vlist',
+    name: 'vlist',
+    component: () => import('@/views/ListPage')
   }
 ]
 const routerContext = require.context('./', true, /index\.js$/)
