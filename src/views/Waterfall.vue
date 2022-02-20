@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <input type="file" @change="fileChange">
+  </div>
 </template>
 
 <script>
@@ -11,12 +13,21 @@ export default {
     this.list = images
     return {}
   },
-  mounted () {
-    console.log(this)
+  methods: {
+    fileChange(e) {
+      const [file] = e.target.files
+      const chunks = this.sliceFile(file)
+    },
+    sliceFile(file) {
+      const size = 50 * 1024 * 1024
+      let current = 0
+      let chunkList = []
+      while (current < file.size) {
+        chunkList.push(file.slice(current, current + size))
+        current += size
+      }
+      return chunkList
+    }
   }
 }
 </script>
-
-<style scoped>
-
-</style>

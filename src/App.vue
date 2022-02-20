@@ -22,9 +22,11 @@
             <el-menu-item index="/avatar">图片裁剪</el-menu-item>
             <el-menu-item index="/drag">拖拽1</el-menu-item>
             <el-menu-item index="/drag2">拖拽2</el-menu-item>
+            <el-menu-item index="/drag3">拖拽3</el-menu-item>
             <el-menu-item index="/event">事件</el-menu-item>
             <el-menu-item index="/upload">上传</el-menu-item>
             <el-menu-item index="/waterfall">瀑布流</el-menu-item>
+            <el-menu-item index="/vlist">虚拟列表</el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>

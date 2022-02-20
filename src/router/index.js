@@ -20,6 +20,11 @@ let routes = [
     component: () => import('@/views/Drag2')
   },
   {
+    path: '/drag3',
+    name: 'drag3',
+    component: () => import('@/views/Drag3')
+  },
+  {
     path: '/event',
     name: 'event',
     component: () => import('@/views/Event')
@@ -33,6 +38,11 @@ let routes = [
     path: '/waterfall',
     name: 'waterfall',
     component: () => import('@/views/Waterfall')
+  },
+  {
+    path: '/vlist',
+    name: 'vlist',
+    component: () => import('@/views/ListPage')
   }
 ]
 const routerContext = require.context('./', true, /index\.js$/)
