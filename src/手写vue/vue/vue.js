@@ -1,14 +1,13 @@
 function defineReactive(obj, key, val) {
   // 递归，响应嵌套对象
   observe(val)
-  // 创建Dep实例，每执行一次数据响应式，就做一次依赖收集
+  // 为每个属性创建一个依赖收集的容器
   const dep = new Dep()
 
   Object.defineProperty(obj, key, {
     get() {
-      console.log('get>>>', val)
-      // 依赖收集
-      Dep.target && dep.addDep(Dep.target) // 值被读取了，将这个依赖收集起来
+      // 如果有target标识，就进行依赖收集
+      Dep.target && dep.addDep(Dep.target)
       return val
     },
     set(newVal) {
